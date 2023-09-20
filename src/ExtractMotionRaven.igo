@@ -1,0 +1,40 @@
+(HeaderFile "ExtractMotionRaven.h" 
+	(object Gap (namespace)
+		(object OptExtension (namespace)
+			(object ExtractMotionRaven
+				(uses igAnimationDatabase igTransformSequence1_5)
+				(base (type igOptBase))
+				
+				(function
+					(protected)
+					(c++declaration "igBool configure(igInt sectionHandle)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool apply(igNodeRef& node)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool applyInfo(igInfo* info)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "void ExtractMotionFromAnimation(igAnimationDatabase* animDB, igAnimation* animation)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool ApplyToDB(igAnimationDatabase* animDB)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool canOptimize(igInfo* info)")
+				)
+			)
+		)
+	)
+)

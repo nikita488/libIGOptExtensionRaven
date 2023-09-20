@@ -1,0 +1,16 @@
+(HeaderSettings
+	(C++HeaderDirectory "include")
+
+	(HeaderFile "libIGOptExtensionRaven.h" 
+		(library libIGOptExtensionRaven
+		    (name libIGOptExtensionRaven)
+			(debugName libIGOptExtensionRaven-dbg)
+			(dynamicSwitch IG_ALCHEMY_DLL)
+			
+			(readFiles (append 
+				(fileNames "include/*.h")
+				(filterOut (fileNames "src/*.igo") "libIGOptExtensionRaven.igo")
+			))
+		)
+	)
+)

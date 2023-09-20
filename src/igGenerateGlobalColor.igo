@@ -1,0 +1,29 @@
+(HeaderFile "igGenerateGlobalColor.h" 
+	(c++preamble #" 
+		#include <igGlobalColorStateAttr.h>
+	"#)
+
+	(object Gap (namespace)
+		(object Opt (namespace)
+			(object igGenerateGlobalColor
+				(uses igGroup igAttrSet igGeometry igGeometryAttr igGeometryAttr2)
+				(base (type igOptVisitObject))
+				
+				(function
+					(public)
+					(c++declaration "igBool configure(igInt sectionHandle)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igMetaObject* getVisitedObjectMeta()")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "void visitor(igObject* object)")
+				)
+			)
+		)
+	)
+)

@@ -1,0 +1,75 @@
+(HeaderFile "igRavenSetupMUAMaterial.h" 
+	(c++preamble #"
+		#include <igOpt/igVertexArrayHelper.h>
+		#include <igOpt/igVertexTools.h>
+	"#)
+
+	(object Gap (namespace)
+		(object Opt (namespace)
+			(object igRavenSetupMUAMaterial
+				(uses igRegularExpression igImpSceneGraphBuilder igImpTextureMapBuilder igImpStringId igImpEnvironmentChannel igAttrSet igGeometry igGeometryAttr igGeometryAttr2 igVertexArray igVertexArray2 igTextureBindAttr igTextureStateAttr igShaderParametersAttr)
+				(base (type igOptVisitObject))
+					(field _diffuseMapName (protected) (type igString) (value NULL))
+					(field _normalMap (protected) (type igString) (value NULL))
+					(field _specularMap (protected) (type igString) (value NULL))
+					(field _reflectionMapRight (protected) (type igString) (value NULL))
+					(field _reflectionMapLeft (protected) (type igString) (value NULL))
+					(field _reflectionMapBack (protected) (type igString) (value NULL))
+					(field _reflectionMapFront (protected) (type igString) (value NULL))
+					(field _reflectionMapUp (protected) (type igString) (value NULL))
+					(field _reflectionMapDown (protected) (type igString) (value NULL))
+					(field _reflectance (protected) (type igFloat) (value 0.0F))
+					(field _reflectionMaskMap (protected) (type igString) (value NULL))
+					(field _emissiveMap (protected) (type igString) (value NULL))
+					(field _regex (protected) (type igRegularExpression) (construct))
+					(field _sceneGraph (protected) (type igImpSceneGraphBuilder) (construct))
+					(field _environmentMap (protected) (type igImpEnvironmentChannel) (construct))
+
+				(function
+					(protected)
+					(c++declaration "igImpStringIdRef addTexture(igImpTexture texture)")
+				)
+
+				(function
+					(protected)
+					(c++declaration "igTextureBindAttrRef getTextureBind(igImpStringIdRef id, igInt unitID = 0)")
+				)
+
+				(function
+					(protected)
+					(c++declaration "void appendTextureMap(igAttrSet* attributes, igString texturePath, igInt unitID = 0)")
+				)
+
+				(function
+					(protected)
+					(c++declaration "void appendTextureMap(igAttrSet* attributes, igImpStringIdRef id, igInt unitID = 0)")
+				)
+
+				(function
+					(protected)
+					(c++declaration "void appendReflectionTextureMap(igAttrSet* attributes)")
+				)
+
+				(function
+					(protected)
+					(c++declaration "void processGeometry(igGeometry* geometry, igAttrSet* attributes, igTextureBindAttr* diffuseTexture)")
+				)
+				
+				(function
+					(public)
+					(c++declaration "igBool configure(igInt sectionHandle)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igMetaObject* getVisitedObjectMeta()")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "void visitor(igObject* object)")
+				)
+			)
+		)
+	)
+)
