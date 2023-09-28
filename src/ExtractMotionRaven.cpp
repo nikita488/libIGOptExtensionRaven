@@ -67,12 +67,12 @@ void ExtractMotionRaven::ExtractMotionFromAnimation(igAnimationDatabase* animDB,
 	const igVec3f firstXlate = *motionSequence->getTranslation(0);
 	const igVec3f lastXlate = *motionSequence->getTranslation(motionXlateCount - 1);
 	igVec3f motionDir = igVec3f(lastXlate[0] - firstXlate[0], lastXlate[1] - firstXlate[1], lastXlate[2] - firstXlate[2]);
-	igVec3f motionDirScaled = igVec3f();
+	igVec3f motionDirScaled;
 	
 	const igDouble durationNano = igDouble(rootSequence->getDuration());
 	const igDouble durationSeconds = durationNano * (1 / 1000000000.0);
 	
-	const igBool linear = keyCount <= 3;//key count < 3 was in original Raven plugin, but animation with 3 keyframes is also have +999.0
+	const igBool linear = keyCount <= 3;//key count < 3 was in original Raven plugin, but animation with 3 keyframes also have w +999.0
 	const igString motionType = linear ? "Linear" : "Tracked";
 	
 	if (durationSeconds > 0.0)
@@ -83,7 +83,7 @@ void ExtractMotionRaven::ExtractMotionFromAnimation(igAnimationDatabase* animDB,
 
 	if (linear)
 	{
-		if (absf(motionDir[0]) <= 6.0F)
+		if (abs(motionDir[0]) <= 6.0F)
 			motionDir[0] = 0.0F;
 		if (abs(motionDir[1]) <= 6.0F)
 			motionDir[1] = 0.0F;
@@ -124,7 +124,7 @@ void ExtractMotionRaven::ExtractMotionFromAnimation(igAnimationDatabase* animDB,
 			motionSequence->getMatrix(motionTM, rootSequence->getTime(keyIndex));
 			motionTM.getTranslation(motionXlate);
 
-			igVec3f dir = igVec3f(motionXlate[0] + rootXlate[0], motionXlate[1] + rootXlate[1], motionXlate[2] + rootXlate[2]);
+			igVec3f dir = igVec3f(motionXlate[0] + rootXlate[0], motionXlate[1] + rootXlate[1], motionXlate[2] + rootXlate[2]);//rootXlate[0] - motionXlate[0], rootXlate[1] - motionXlate[1], rootXlate[2] - motionXlate[2]
 			rootSequence->setTranslation(keyIndex, &dir);
 		}*/
 
