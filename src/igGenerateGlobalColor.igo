@@ -1,7 +1,5 @@
 (HeaderFile "igGenerateGlobalColor.h" 
-	(c++preamble #" 
-		#include <igGlobalColorStateAttr.h>
-	"#)
+(c++preamble "#include <igGlobalColorStateAttr.h>")
 
 	(object Gap (namespace)
 		(object Opt (namespace)

@@ -17,7 +17,7 @@ igMetaObject* igGenerateGlobalColor::getVisitedObjectMeta()
 void igGenerateGlobalColor::visitor(igObject* object)
 {
 	igGeometry* geometry = static_cast<igGeometry*>(object);
-	igInt attrCount = geometry->getAttrCount();
+	const igInt attrCount = geometry->getAttrCount();
 	igInt vertexColorAttrCount = 0;
 
 	for (igInt i = 0; i < attrCount; i++)
@@ -28,7 +28,7 @@ void igGenerateGlobalColor::visitor(igObject* object)
 		if (attr->isOfType(igGeometryAttr::getClassMeta()))
 			hasVertexColors = static_cast<igGeometryAttr*>(attr)->getVertexFormat().hasVertexColors();
 		else if (attr->isOfType(igGeometryAttr2::getClassMeta()))
-			hasVertexColors = static_cast<igGeometryAttr2*>(attr)->getVertexArray()->findVertexData(igVertexData::IG_VERTEX_COMPONENT_COLOR);
+			hasVertexColors = static_cast<igGeometryAttr2*>(attr)->getVertexArray()->findVertexData(igVertexData::IG_VERTEX_COMPONENT_COLOR) != NULL;
 
 		if (hasVertexColors)
 			vertexColorAttrCount++;
@@ -37,8 +37,8 @@ void igGenerateGlobalColor::visitor(igObject* object)
 	if (attrCount == vertexColorAttrCount)
 		return;
 
-	igInt parentCount = geometry->getParentCount();
-	Gap::Attrs::igGlobalColorStateAttrRef globalColorState = Gap::Attrs::igGlobalColorStateAttr::instantiateRefFromPool(kIGMemoryPoolAttribute);
+	const igInt parentCount = geometry->getParentCount();
+	Gap::Attrs::igGlobalColorStateAttrRef globalColorState = Gap::Attrs::igGlobalColorStateAttr::instantiateRef();
 
 	globalColorState->setState(true);
 
@@ -51,7 +51,7 @@ void igGenerateGlobalColor::visitor(igObject* object)
 	}
 	else
 	{
-		igAttrSetRef attributes = igAttrSet::instantiateRefFromPool(kIGMemoryPoolAttribute);
+		igAttrSetRef attributes = igAttrSet::instantiateRef();
 
 		attributes->appendAttr(globalColorState);
 

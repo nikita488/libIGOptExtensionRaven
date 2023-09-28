@@ -1,8 +1,8 @@
 (HeaderFile "igRavenSetupMUAMaterial.h" 
-	(c++preamble #"
-		#include <igOpt/igVertexArrayHelper.h>
-		#include <igOpt/igVertexTools.h>
-	"#)
+(c++preamble "
+#include <igOpt/igVertexArrayHelper.h>
+#include <igOpt/igVertexTools.h>
+")
 
 	(object Gap (namespace)
 		(object Opt (namespace)
