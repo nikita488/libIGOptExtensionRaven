@@ -1,0 +1,32 @@
+(HeaderFile "igHullNode.h" 
+	(object igHullNode
+		(fieldType)
+		[field min (public) (type igVec3f)]
+		[field clipFlags1 (public) (type igInt)]
+		[field max (public) (type igVec3f)]
+		[field clipFlags2 (public) (type igInt)]
+	)
+	
+	(object igHullNodeList
+		(base (type (igTDataNoOperatorList igHullNode)))
+		[field _data (type (array igHullNode)) (override)]
+		
+		(function
+			(public)
+			(c++declaration #"void resize(Gap::igInt newCount, const igHullNode& node)"#)
+	(c++inline #"{
+		const Gap::igInt count = _count;
+		
+		if (count < newCount)
+		{
+			for (Gap::igInt i = 0; i < (newCount - count); i++)
+				append(node);
+		}
+		else if (newCount < count)
+		{
+			remove(newCount, count - newCount);
+		}
+	}"#)
+		)
+	)
+)

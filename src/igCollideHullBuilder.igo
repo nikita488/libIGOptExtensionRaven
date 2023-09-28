@@ -1,0 +1,62 @@
+(HeaderFile "igCollideHullBuilder.h" 
+(c++preamble "#include <algorithm>")
+
+	(object igCollideHullBuilder
+		(uses (odlRef Opt igLogInterface) igHullTriangle igHullNode)
+		[field _interface (type (odlRef Opt igLogInterface)) (protected) (value NULL) (autoget (const false)) (autoset)]
+		[field _triangles (type igHullTriangleList) (protected) (construct) (autoget (const false))]
+		[field _nodes (type igHullNodeList) (protected) (construct) (autoget (const false))]
+		[field _optimizeHull (type igBool) (protected) (autoget) (autoset)]
+		[field _maxTrianglesPerLeaf (type igInt) (protected) (autoget) (autoset)]
+		[field _levelCount (type igInt) (protected)]
+		
+		(function
+			(public)
+			(c++declaration "void addTriangle(igHullTriangle& triangle, Gap::igBool swapVertices = true)")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igBool isRedundant(igHullTriangle& triangle) const")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igInt getNodeCountFromTriangles()")
+		)
+		
+		(function
+			(public)
+			(c++declaration "void process(Gap::igInt nodeIndex, Gap::igInt levelIndex, Gap::igInt triangleStartIndex, Gap::igInt triangleCount)")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igBool buildHull()")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igInt getTriangleCount() const")
+			(c++inline "{ return _triangles->getCount(); }")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igInt getNodeCount() const")
+			(c++inline "{ return _nodes->getCount(); }")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igInt getTotalTriangleBytes() const")
+			(c++inline "{ return _triangles->getElementSize() * _triangles->getCount(); }")
+		)
+		
+		(function
+			(public)
+			(c++declaration "Gap::igInt getTotalNodeBytes() const")
+			(c++inline "{ return _nodes->getElementSize() * _nodes->getCount(); }")
+		)
+	)
+)

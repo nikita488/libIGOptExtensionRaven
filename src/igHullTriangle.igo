@@ -1,0 +1,29 @@
+(HeaderFile "igHullTriangle.h" 
+	(object igHullTriangle
+		(fieldType)
+		[field p1 (public) (type igVec3f)]
+		[field reserved (public) (type igInt)]
+		[field p2 (public) (type igVec3f)]
+		[field clipFlags (public) (type igInt)]
+		[field p3 (public) (type igVec3f)]
+		[field materialIndex (public) (type igInt)]
+		
+		(function
+			(public)
+			(c++declaration "Gap::igVec3f& getVertex(Gap::igUnsignedInt index)")
+	(c++inline #"{
+		if (index == 1)
+			return p2;
+		else if (index == 2)
+			return p3;
+		else
+			return p1;
+	}"#)
+		)
+	)
+	
+	(object igHullTriangleList
+		(base (type (igTDataNoOperatorList igHullTriangle)))
+		[field _data (type (array igHullTriangle)) (override)]
+	)
+)

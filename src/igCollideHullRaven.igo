@@ -1,0 +1,63 @@
+(HeaderFile "igCollideHullRaven.h"
+(c++preamble "#include <igCollideHull.h>")
+
+	(object Gap (namespace)
+		(object OptExtension (namespace)
+			(object igCollideHullRaven
+				(uses 
+					igOptInterface 
+					igCollideHullBuilder 
+					igHullTriangle 
+					igAttrSet 
+					igGeometry 
+					igTransform 
+					igTransformSequence 
+					igUserInfo 
+					igProperty 
+					igStringKey 
+					igStringValue 
+					igGeometryAttr1_5 
+					igGeometryAttr2 
+					igVertexArray2Helper
+				)
+				
+(c++members "
+private:
+	static igMatrix44f _geometryTM;
+	static igInt _clipFlags;
+	static igInt _materialIndex;
+")
+
+				(base (type igOptBase))
+					[field _builder (type igCollideHullBuilder) (construct) (autoget (const false)) (autoset)]
+					[field _optimizeHull (type igBool) (value true) (autoget) (autoset)]
+					[field _maxTrianglesPerLeaf (type igInt) (value 8) (autoget) (autoset)]
+				
+				(function
+					(protected)
+					(c++declaration "igBool configure(igInt sectionHandle)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool processGeometry(igGeometry* geometry)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "void processUserInfo(igUserInfo* userInfo)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "void processNode(igNode* node)")
+				)
+				
+				(function
+					(protected)
+					(c++declaration "igBool apply(igNodeRef& node)")
+				)
+			)
+		)
+	)
+)
