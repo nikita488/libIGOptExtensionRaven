@@ -1,8 +1,10 @@
 #include "../include/ExtractMotionRaven.h"
 
-namespace Gap {
+namespace Gap
+{
 
-namespace OptExtension {
+namespace OptExtension
+{
 
 igBool ExtractMotionRaven::configure(igInt sectionHandle)
 {
