@@ -14,7 +14,7 @@ void igCollideHullBuilder::addTriangle(igHullTriangle& triangle, Gap::igBool swa
 	}
 
 	if (_optimizeHull)
-		return;//TODO: optimize hull
+		_triangles->append(tri);//TODO: optimize hull and replace to other method
 	else
 		_triangles->append(tri);
 }
@@ -165,8 +165,7 @@ Gap::igBool igCollideHullBuilder::buildHull()
 	static Gap::igVec3f defaultBound;
 
 	defaultBound = -900000.0F;
-	node.min = defaultBound;
-	node.max = defaultBound;
+	node.min = node.max = defaultBound;
 
 	for (Gap::igInt triangleIndex = 0; triangleIndex < triangleCount; triangleIndex++)
 	{
