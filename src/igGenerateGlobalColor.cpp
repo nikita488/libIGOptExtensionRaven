@@ -1,8 +1,10 @@
 #include "../include/igGenerateGlobalColor.h"
 
-namespace Gap {
+namespace Gap
+{
 
-namespace Opt {
+namespace Opt
+{
 
 igBool igGenerateGlobalColor::configure(igInt sectionHandle)
 {
@@ -35,7 +37,10 @@ void igGenerateGlobalColor::visitor(igObject* object)
 	}
 
 	if (attrCount == vertexColorAttrCount)
+	{
+		printf("Vertex colors were found in igGeometry `%s`. Skipping", geometry->getName());
 		return;
+	}
 
 	const igInt parentCount = geometry->getParentCount();
 	Gap::Attrs::igGlobalColorStateAttrRef globalColorState = Gap::Attrs::igGlobalColorStateAttr::instantiateRef();
